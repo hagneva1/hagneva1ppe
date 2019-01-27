@@ -17,7 +17,7 @@
 /**
  * Teste si un quelconque visiteur est connecté
  *
- * @return vrai ou faux
+ * @return boolean vrai ou faux
  */
 function estConnecte()
 {
@@ -56,7 +56,7 @@ function deconnecter()
  *
  * @param String $maDate au format  jj/mm/aaaa
  *
- * @return Date au format anglais aaaa-mm-jj
+ * @return DateTime au format anglais aaaa-mm-jj
  */
 function dateFrancaisVersAnglais($maDate)
 {
@@ -70,7 +70,7 @@ function dateFrancaisVersAnglais($maDate)
  *
  * @param String $maDate au format  aaaa-mm-jj
  *
- * @return Date au format format français jj/mm/aaaa
+ * @return DateTime au format format français jj/mm/aaaa
  */
 function dateAnglaisVersFrancais($maDate)
 {
