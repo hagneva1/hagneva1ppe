@@ -1,0 +1,70 @@
+
+FILE: C:\wamp64\www\hagneva1ppe\controleurs\c_gererFrais.php
+----------------------------------------------------------------------
+FOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 29 | WARNING | Line exceeds 85 characters; contains 89 characters
+----------------------------------------------------------------------
+
+
+FILE: C:\wamp64\www\hagneva1ppe\includes\class.pdogsb.inc.php
+----------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 6 LINES
+----------------------------------------------------------------------
+ 41 | ERROR | Private member variable "serveur" must be prefixed with
+    |       | an underscore
+ 42 | ERROR | Private member variable "bdd" must be prefixed with an
+    |       | underscore
+ 43 | ERROR | Private member variable "user" must be prefixed with an
+    |       | underscore
+ 44 | ERROR | Private member variable "mdp" must be prefixed with an
+    |       | underscore
+ 45 | ERROR | Private member variable "monPdo" must be prefixed with
+    |       | an underscore
+ 46 | ERROR | Private member variable "monPdoGsb" must be prefixed
+    |       | with an underscore
+----------------------------------------------------------------------
+
+
+FILE: C:\wamp64\www\hagneva1ppe\vues\v_entete.php
+----------------------------------------------------------------------
+FOUND 9 ERRORS AND 7 WARNINGS AFFECTING 8 LINES
+----------------------------------------------------------------------
+ 46 | ERROR   | [ ] Expected "if (...) {\n"; found "if (...) { "
+ 46 | ERROR   | [x] Closing brace must be on a line by itself
+ 46 | WARNING | [ ] Line exceeds 85 characters; contains 98
+    |         |     characters
+ 52 | ERROR   | [ ] Expected "if (...) {\n"; found "if (...) { "
+ 52 | ERROR   | [x] Closing brace must be on a line by itself
+ 52 | WARNING | [ ] Line exceeds 85 characters; contains 92
+    |         |     characters
+ 58 | ERROR   | [ ] Expected "if (...) {\n"; found "if (...) { "
+ 58 | ERROR   | [x] Closing brace must be on a line by itself
+ 58 | WARNING | [ ] Line exceeds 85 characters; contains 91
+    |         |     characters
+ 59 | WARNING | [ ] Line exceeds 85 characters; contains 89
+    |         |     characters
+ 60 | WARNING | [ ] Line exceeds 85 characters; contains 86
+    |         |     characters
+ 65 | ERROR   | [ ] Expected "if (...) {\n"; found "if (...) { "
+ 65 | ERROR   | [x] Closing brace must be on a line by itself
+ 65 | WARNING | [ ] Line exceeds 85 characters; contains 89
+    |         |     characters
+ 66 | WARNING | [ ] Line exceeds 85 characters; contains 93
+    |         |     characters
+ 75 | ERROR   | [x] Line indented incorrectly; expected at least 16
+    |         |     spaces, found 12
+----------------------------------------------------------------------
+PHPCBF CAN FIX THE 5 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------
+
+
+FILE: C:\wamp64\www\hagneva1ppe\vues\v_listeFraisHorsForfait.php
+----------------------------------------------------------------------
+FOUND 0 ERRORS AND 2 WARNINGS AFFECTING 2 LINES
+----------------------------------------------------------------------
+ 41 | WARNING | Line exceeds 85 characters; contains 106 characters
+ 42 | WARNING | Line exceeds 85 characters; contains 124 characters
+----------------------------------------------------------------------
+
+

@@ -15,10 +15,10 @@
  */
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
-$idVisiteur = $_SESSION['idVisiteur'];
+$idUser = $_SESSION['idUser'];
 switch ($action) {
 case 'selectionnerMois':
-    $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
+    $lesMois = $pdo->getLesMoisDisponibles($idUser);
     // Afin de sélectionner par défaut le dernier mois dans la zone de liste
     // on demande toutes les clés, et on prend la première,
     // les mois étant triés décroissants
@@ -28,12 +28,12 @@ case 'selectionnerMois':
     break;
 case 'voirEtatFrais':
     $leMois = filter_input(INPUT_POST, 'lstMois', FILTER_SANITIZE_STRING);
-    $lesMois = $pdo->getLesMoisDisponibles($idVisiteur);
+    $lesMois = $pdo->getLesMoisDisponibles($idUser);
     $moisASelectionner = $leMois;
     include 'vues/v_listeMois.php';
-    $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idVisiteur, $leMois);
-    $lesFraisForfait = $pdo->getLesFraisForfait($idVisiteur, $leMois);
-    $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idVisiteur, $leMois);
+    $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idUser, $leMois);
+    $lesFraisForfait = $pdo->getLesFraisForfait($idUser, $leMois);
+    $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idUser, $leMois);
     $numAnnee = substr($leMois, 0, 4);
     $numMois = substr($leMois, 4, 2);
     $libEtat = $lesInfosFicheFrais['libEtat'];

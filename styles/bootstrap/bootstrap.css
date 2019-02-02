@@ -5718,6 +5718,24 @@ button.list-group-item-danger.active:focus {
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #337ab7;
 }
+.panel-secondary {
+  border-color: #FE8709;
+}
+.panel-secondary > .panel-heading {
+  color: #fff;
+  background-color: #FE8709;
+  border-color: #FE8709;
+}
+.panel-secondary > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #FE8709;
+}
+.panel-secondary > .panel-heading .badge {
+  color: #FE8709;
+  background-color: #fff;
+}
+.panel-secondary > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: 	#FE8709;
+}
 .panel-success {
   border-color: #d6e9c6;
 }
