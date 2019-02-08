@@ -411,14 +411,21 @@ class PdoGsb
      * @return [] un tableau associatif de clÃ© un mois -aaaamm- et de valeurs
      *         l'annÃ©e et le mois correspondant
      */
-    public function getLesMoisDisponibles($idVisiteur)
+    public function getLesMoisDisponibles($idVisiteur=Null)
     {
-        $requetePrepare = PdoGSB::$monPdo->prepare(
-            'SELECT fichefrais.mois AS mois FROM fichefrais '
-            . 'WHERE fichefrais.idvisiteur = :unIdUser '
-            . 'ORDER BY fichefrais.mois desc'
-        );
-        $requetePrepare->bindParam(':unIdUser', $idVisiteur, PDO::PARAM_STR);
+        if ($idVisiteur != Null) {
+            $requetePrepare = PdoGSB::$monPdo->prepare(
+                'SELECT fichefrais.mois AS mois FROM fichefrais '
+                . 'WHERE fichefrais.idvisiteur = :unIdUser '
+                . 'ORDER BY fichefrais.mois desc'
+            );
+            $requetePrepare->bindParam(':unIdUser', $idVisiteur, PDO::PARAM_STR);
+        } else {
+            $requetePrepare = PdoGSB::$monPdo->prepare(
+                'SELECT distinct fichefrais.mois AS mois FROM fichefrais '
+                . 'ORDER BY fichefrais.mois desc'
+            );
+        }
         $requetePrepare->execute();
         $lesMois = array();
         while ($laLigne = $requetePrepare->fetch()) {
@@ -433,6 +440,34 @@ class PdoGsb
         }
         return $lesMois;
     }
+    /**
+     * Retourne la liste des visiteurs présents dans la table user
+     * 
+     * @return [] un tableau associatifs de clé id user et de valeurs le nom et le prénom 
+     *      de l'utisateur correspondant
+     */
+    public function getLesVisiteurs()
+    {
+        $requetePrepare = PdoGSB::$monPdo->prepare(
+            "SELECT user.id AS id, user.nom AS nom, user.prenom As prenom FROM user "
+            . "WHERE user.typepop = 'v' "
+            . "ORDER BY user.nom, user.prenom"
+            );
+        $requetePrepare->execute();
+        $lesVisiteurs = array();
+        while ($laLigne = $requetePrepare->fetch()) {
+            $id = $laLigne['id'];
+            $nom = $laLigne['nom'];
+            $prenom = $laLigne['prenom'];
+            $lesVisiteurs[] = array(
+                'id' => $id,
+                'nom' => $nom,
+                'prenom' => $prenom
+            );
+        }
+        return $lesVisiteurs;
+    }
+    
 
     /**
      * Retourne les informations d'une fiche de frais d'un user pour un
