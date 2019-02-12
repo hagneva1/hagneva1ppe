@@ -99,19 +99,57 @@ if ($_SESSION['typepop'] == 'v') {
                     $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
                     $date = $unFraisHorsForfait['date'];
                     $montant = $unFraisHorsForfait['montant'];
-                    $id = $unFraisHorsForfait['id']; ?>           
+                    $id = $unFraisHorsForfait['id']; ?>
+                    <form method="post" 
+                  	action="index.php?uc=gererFrais&action=validerMajFraisHorsForfait" 
+                  	role="form">           
                     <tr>
-                        <td> <?php echo $date ?></td>
-                        <td> <?php echo $libelle ?></td>
-                        <td><?php echo $montant ?></td>
-                        <td><a href="index.php?uc=gererFrais&action=supprimerFrais&idFrais=<?php echo $id ?>" 
-                               onclick="return confirm('Voulez-vous vraiment supprimer ce frais?');">Supprimer ce frais</a></td>
+                        <td> <input type="text" id="dateFraisHF" 
+                                   name="dateFraisHF"
+                                   size="5" maxlength="10" 
+                                   value="<?php echo $date ?>" 
+                                   class="form-control">
+                        </td>
+                        <td> <input type="text" id="libelleFraisHF" 
+                                   name="libelleFraisHF"
+                                   size="20" maxlength="50" 
+                                   value="<?php echo $libelle ?>" 
+                                   class="form-control">
+                        </td>
+                        <td><input type="text" id="montantFraisHF" 
+                                   name="montantFraisHF"
+                                   size="5" maxlength="5" 
+                                   value="<?php echo $montant ?>" 
+                                   class="form-control">
+                        </td>
+                        <td><button class="btn btn-success" type="submit">Corriger</button>
+                    		<button class="btn btn-danger" type="submit" 
+                    			formaction="index.php?uc=gererFrais&action=validerMajFraisHorsForfait" >Refusé</button>
+                    	</td>
                     </tr>
+                    </form>
                     <?php
                 }
                 ?>
                 </tbody>  
             </table>
         </div>
+          	<table class="table-form">
+          		<tbody>
+              		<tr>
+              		<form method="post" 
+                  	action="index.php?uc=gererFrais&action=validerFicheFrais" 
+                  	role="form">         		  
+                  		<td><label for="nbJustificatifs">Nombre de justificatifs : </label></td>      
+                      	<td><input type="text" id="nbJustificatifs" name="nbJustificatifs" size="5" maxlength="3"
+                      		value="<?php echo $nbJustificatifs;?>" class="form-control" disabled="disabled">
+                      		<input type="hidden" id="selectVisiteur" name="selectVisiteur" value=<?php echo $selectVisiteur;?> >
+                      		<input type="hidden" id="selectMois" name="selectMois" value=<?php echo $selectMois;?> >
+                  		</td>
+                      	<td><button class="btn btn-success" type="submit">Valider la fiche</a></td>
+              		</form>
+                    </tr>
+                </tbody>
+           </table> 
     </div>
 <?php }

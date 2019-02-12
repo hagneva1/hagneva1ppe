@@ -1750,6 +1750,7 @@ pre code {
 }
 .col-xs-push-0 {
   left: auto;
+  width: 10%;
 }
 .col-xs-offset-12 {
   margin-left: 100%;
@@ -2267,6 +2268,11 @@ pre code {
 table {
   background-color: transparent;
 }
+.table-form {
+  background-color: transparent;
+  border-collapse: separate;
+  border-spacing: 15px;
+}
 caption {
   padding-top: 8px;
   padding-bottom: 8px;
@@ -2615,6 +2621,9 @@ textarea.form-control {
 }
 input[type="search"] {
   -webkit-appearance: none;
+}
+.form-control .form-control-little {
+	width="10%";
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="date"].form-control,

@@ -24,7 +24,7 @@
  */
 function getLesVisiteurs($pdo)
 {
-    $req = 'select * from visiteur';
+    $req = "select * from user where typepop = 'v'";
     $res = $pdo->query($req);
     $lesLignes = $res->fetchAll();
     return $lesLignes;
@@ -265,7 +265,7 @@ function getDesFraisHorsForfait()
  */
 function updateMdpVisiteur($pdo)
 {
-    $req = 'select * from visiteur';
+    $req = "select * from user where typepop = 'v'";
     $res = $pdo->query($req);
     $lesLignes = $res->fetchAll();
     $lettres = 'azertyuiopqsdfghjkmwxcvbn123456789';

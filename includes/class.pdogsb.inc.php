@@ -486,6 +486,7 @@ class PdoGsb
             . 'fichefrais.datemodif as dateModif,'
             . 'fichefrais.nbjustificatifs as nbJustificatifs, '
             . 'fichefrais.montantvalide as montantValide, '
+            . 'fichefrais.idetat as idEtat,'
             . 'etat.libelle as libEtat '
             . 'FROM fichefrais '
             . 'INNER JOIN etat ON fichefrais.idetat = etat.id '

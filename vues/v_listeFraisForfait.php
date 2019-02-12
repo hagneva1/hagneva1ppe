@@ -22,7 +22,7 @@ if ($_SESSION['typepop'] == 'v') {
         <h3>Eléments forfaitisés</h3>
         <div class="col-md-4">
             <form method="post" 
-                  action="index.php?uc=gererFrais&action=validerMajFraisForfait" 
+                  action="index.php?uc=gererFrais&action=validerMajFraisForfait"
                   role="form">
                 <fieldset>       
                     <?php
@@ -54,7 +54,7 @@ if ($_SESSION['typepop'] == 'v') {
         <h3>Eléments forfaitisés</h3>
         <div class="col-md-4">
             <form method="post" 
-                  action="index.php?uc=gererFrais&action=validerMajFraisForfait" 
+                  action="index.php?uc=gererFrais&action=validerMajFraisForfait"  
                   role="form">
                 <fieldset>       
                     <?php
@@ -69,6 +69,8 @@ if ($_SESSION['typepop'] == 'v') {
                                    size="10" maxlength="5" 
                                    value="<?php echo $quantite ?>" 
                                    class="form-control">
+                           <input type="hidden" id="selectVisiteur" name="selectVisiteur" value=<?php echo $selectVisiteur;?>>
+                           <input type="hidden" id="selectMois" name="selectMois" value=<?php echo $selectMois;?>>
                         </div>
                         <?php
                     }
