@@ -16,7 +16,7 @@
 ?>
 <div class="alert alert-success" role="alert">
     <?php
-    echo 'La fiche a Ã©tÃ© correctement validÃ©e : ';
+    echo 'La fiche a été correctement validée : ';
     ?>
     <a href="index.php?uc=accueil"> Retour à l'accueil </a>
 </div>

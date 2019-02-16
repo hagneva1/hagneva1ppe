@@ -101,30 +101,36 @@ if ($_SESSION['typepop'] == 'v') {
                     $montant = $unFraisHorsForfait['montant'];
                     $id = $unFraisHorsForfait['id']; ?>
                     <form method="post" 
-                  	action="index.php?uc=gererFrais&action=validerMajFraisHorsForfait" 
-                  	role="form">           
+                  	action="index.php?uc=gererFrais&action=reporterFraisHorsForfait" 
+                  	role="form">  
+                  	<input type="hidden" id="selectVisiteur" name="selectVisiteur" value="<?php echo $selectVisiteur?>">
+                  	<input type="hidden" id="selectMois" name="selectMois" value="<?php echo $selectMois?>">  
+                  	<input type="hidden" id="idFraisHorsForfait" name="idFraisHorsForfait" value="<?php echo $id?>">                    	       
                     <tr>
                         <td> <input type="text" id="dateFraisHF" 
                                    name="dateFraisHF"
                                    size="5" maxlength="10" 
                                    value="<?php echo $date ?>" 
+                                   disabled="disabled" 
                                    class="form-control">
                         </td>
                         <td> <input type="text" id="libelleFraisHF" 
                                    name="libelleFraisHF"
                                    size="20" maxlength="50" 
                                    value="<?php echo $libelle ?>" 
+                                   disabled="disabled" 
                                    class="form-control">
                         </td>
                         <td><input type="text" id="montantFraisHF" 
                                    name="montantFraisHF"
                                    size="5" maxlength="5" 
                                    value="<?php echo $montant ?>" 
+                                   disabled="disabled" 
                                    class="form-control">
                         </td>
-                        <td><button class="btn btn-success" type="submit">Corriger</button>
+                        <td><button class="btn btn-warning" type="submit">Reporter</button>
                     		<button class="btn btn-danger" type="submit" 
-                    			formaction="index.php?uc=gererFrais&action=validerMajFraisHorsForfait" >Refusé</button>
+                    			formaction="index.php?uc=gererFrais&action=refuserFraisHorsForfait" >Refusé</button>
                     	</td>
                     </tr>
                     </form>

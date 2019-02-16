@@ -60,13 +60,22 @@
         foreach ($lesFraisHorsForfait as $unFraisHorsForfait) {
             $date = $unFraisHorsForfait['date'];
             $libelle = htmlspecialchars($unFraisHorsForfait['libelle']);
-            $montant = $unFraisHorsForfait['montant']; ?>
+            $montant = $unFraisHorsForfait['montant']; 
+            if (substr($libelle, 0, 6) == 'REFUSE') {
+        ?>
             <tr>
+                <td class='bg-danger'><?php echo $date ?></td>
+                <td class='bg-danger'><?php echo $libelle ?></td>
+                <td class='bg-danger'><?php echo $montant ?></td>
+            </tr>
+            <?php
+            } else { ?>
+        	<tr>
                 <td><?php echo $date ?></td>
                 <td><?php echo $libelle ?></td>
                 <td><?php echo $montant ?></td>
             </tr>
-            <?php
+            <?php }
         }
         ?>
     </table>

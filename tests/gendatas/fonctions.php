@@ -72,6 +72,7 @@ function getLesIdFraisForfait($pdo)
 {
     $req = 'select fraisforfait.id as id '
         . 'from fraisforfait '
+        . "where fraisforfait.id not in ('D4', 'D5', 'E4', 'E5') "
         . 'order by fraisforfait.id';
     $res = $pdo->query($req);
     $lesLignes = $res->fetchAll();
@@ -147,7 +148,7 @@ function creationFichesFrais($pdo)
                 $moisModif = $moisCourant;
             } else {
                 if ($n == 2) {
-                    $etat = 'VA';
+                    $etat = 'CL';
                     $moisModif = getMoisSuivant($moisCourant);
                 } else {
                     $etat = 'RB';
@@ -183,13 +184,29 @@ function creationFraisForfait($pdo)
     foreach ($lesFichesFrais as $uneFicheFrais) {
         $idVisiteur = $uneFicheFrais['idvisiteur'];
         $mois = $uneFicheFrais['mois'];
+        $typeVehicule = rand(0, 3);
+        Switch ($typeVehicule) {
+            case 0:
+                $idFraisForfait = "E4";
+                break;
+            case 1:
+                $idFraisForfait = "E5";
+                break;
+            case 2:
+                $idFraisForfait = "D5";
+                break;
+            case 3:
+                $idFraisForfait = "D4";
+                break;
+        }
+        $quantite = rand(300, 1000);
+        $req = 'insert into lignefraisforfait(idvisiteur,mois,'
+            . 'idfraisforfait,quantite) '
+                . "values('$idVisiteur','$mois','$idFraisForfait',$quantite);";
+        $pdo->exec($req);
         foreach ($lesIdFraisForfait as $unIdFraisForfait) {
             $idFraisForfait = $unIdFraisForfait['id'];
-            if (substr($idFraisForfait, 0, 1) == 'K') {
-                $quantite = rand(300, 1000);
-            } else {
-                $quantite = rand(2, 20);
-            }
+            $quantite = rand(2, 20);
             $req = 'insert into lignefraisforfait(idvisiteur,mois,'
                 . 'idfraisforfait,quantite) '
                 . "values('$idVisiteur','$mois','$idFraisForfait',$quantite);";
