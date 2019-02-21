@@ -152,7 +152,7 @@ if ($_SESSION['typepop'] == 'v') {
                       		<input type="hidden" id="selectVisiteur" name="selectVisiteur" value=<?php echo $selectVisiteur;?> >
                       		<input type="hidden" id="selectMois" name="selectMois" value=<?php echo $selectMois;?> >
                   		</td>
-                      	<td><button class="btn btn-success" type="submit">Valider la fiche</a></td>
+                      	<td><button class="btn btn-success" type="submit">Valider la fiche</button></td>
               		</form>
                     </tr>
                 </tbody>

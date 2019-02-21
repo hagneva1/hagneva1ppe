@@ -1634,6 +1634,19 @@ pre code {
   padding-right: 15px;
   padding-left: 15px;
 }
+.col-spec-4, .col-spec-6 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 0;
+  padding-left: 0;
+  float: left;
+}
+.col-spec-4 {
+	width: 45%;
+}
+.col-spec-6 {
+	width: 55%;
+}
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
@@ -2105,6 +2118,7 @@ pre code {
   }
   .col-md-offset-0 {
     margin-left: 0;
+    padding-left: 0;
   }
 }
 @media (min-width: 1200px) {

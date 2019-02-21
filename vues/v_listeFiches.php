@@ -18,8 +18,19 @@
    <div class="col-md-3">
     	<h3>Choisir la fiche : </h3>
    </div>
-   	<form action="index.php?uc=gererFrais&action=voirValidationFrais" 
-          method="post" role="form" class="form_horizontal" name="selectionFiche">
+   <?php $uc = filter_input(INPUT_GET, 'uc', FILTER_SANITIZE_STRING); 
+   if ($uc == 'gererFrais') {
+   ?>
+       	<form action="index.php?uc=gererFrais&action=voirValidationFrais" 
+              method="post" role="form" class="form_horizontal" name="selectionFiche">
+  <?php 
+   } else {
+   ?>
+       <form action="index.php?uc=etatFrais&action=voirEtatFrais" 
+              method="post" role="form" class="form_horizontal" name="selectionFiche">
+   <?php 
+   }
+   ?>
         <div class="form-group">
         	<div class="col-md-4">
                 <select id="lstVisiteurs" name="lstVisiteurs" class="form-control">
@@ -76,3 +87,10 @@
     	</div>
     </form>
 </div>
+<?php 
+if ($uc == 'etatFrais') {?>
+    	<a href="index.php?uc=etatFrais&action=rembourser">
+        	<button class="btn btn-danger">Rembourser toutes les fiches mises en paiement</button>
+        </a>
+<?php 
+}?>

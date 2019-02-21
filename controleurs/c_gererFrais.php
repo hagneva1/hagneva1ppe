@@ -25,8 +25,13 @@ switch ($action) {
         if ($pdo->estPremierFraisMois($idUser, $mois)) {
             $pdo->creeNouvellesLignesFrais($idUser, $mois);
         }
+        $idVehicule = NULL;
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idUser, $mois);
-        $lesFraisForfait = $pdo->getLesFraisForfait($idUser, $mois);
+        $lesFraisForfait = $pdo->getLesFraisForfait($idUser, $mois, 2);
+        $selectVehicule = $pdo->getLesFraisForfait($idUser, $mois, 2, 2);
+        foreach ($selectVehicule as $unVehicule) {
+            $idVehicule = $unVehicule['idfrais'];
+        }
         require 'vues/v_listeFraisForfait.php';
         require 'vues/v_listeFraisHorsForfait.php';
         break;
@@ -41,6 +46,10 @@ switch ($action) {
             else {
                 ajouterErreur('Les valeurs des frais doivent être numériques');
                 include 'vues/v_erreurs.php';
+            }
+            $selectVehicule = $pdo->getLesFraisForfait($idUser, $mois, 2, 2);
+            foreach ($selectVehicule as $unVehicule) {
+                $idVehicule = $unVehicule['idfrais'];
             }
             $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idUser, $mois);
             $lesFraisForfait = $pdo->getLesFraisForfait($idUser, $mois);
@@ -85,6 +94,10 @@ switch ($action) {
             );
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idUser, $mois);
         $lesFraisForfait = $pdo->getLesFraisForfait($idUser, $mois);
+        $selectVehicule = $pdo->getLesFraisForfait($idUser, $mois, 2, 2);
+        foreach ($selectVehicule as $unVehicule) {
+            $idVehicule = $unVehicule['idfrais'];
+        }
         require 'vues/v_listeFraisForfait.php';
         require 'vues/v_listeFraisHorsForfait.php';
         }
@@ -95,6 +108,10 @@ switch ($action) {
         $pdo->supprimerFraisHorsForfait($idFrais);
         $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idUser, $mois);
         $lesFraisForfait = $pdo->getLesFraisForfait($idUser, $mois);
+        $selectVehicule = $pdo->getLesFraisForfait($idUser, $mois, 2, 2);
+        foreach ($selectVehicule as $unVehicule) {
+            $idVehicule = $unVehicule['idfrais'];
+        }
         require 'vues/v_listeFraisForfait.php';
         require 'vues/v_listeFraisHorsForfait.php';
         break;
@@ -110,7 +127,6 @@ switch ($action) {
     case 'validerFicheFrais':
         $idVisiteur = filter_input(INPUT_POST, 'selectVisiteur', FILTER_SANITIZE_STRING);
         $selectMois = filter_input(INPUT_POST, 'selectMois', FILTER_SANITIZE_STRING);
-        $etat = 'VA';
         $pdo->validerFicheFrais($idVisiteur, $selectMois);
         include 'vues/v_validationFiche.php';
         break;
@@ -178,7 +194,11 @@ switch ($action) {
                 include 'vues/v_erreurs.php';
                 break;
             case "VA":
-                ajouterErreur('Cette fiche a été validée le ' . dateAnglaisVersFrancais($dateModif) . ', le paiement est en cours');
+                ajouterErreur('Cette fiche a été validée le ' . dateAnglaisVersFrancais($dateModif));
+                include 'vues/v_erreurs.php';
+                break;
+            case "MP":
+                ajouterErreur('Cette fiche a été mise en paiement le ' . dateAnglaisVersFrancais($dateModif));
                 include 'vues/v_erreurs.php';
                 break;
             default: 

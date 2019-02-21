@@ -81,6 +81,76 @@ function dateAnglaisVersFrancais($maDate)
 }
 
 /**
+ * Affiche le pdf de la fiche de frais de l'idUser pour le mois donné
+ * 
+ * @param string $idUser
+ * @param integer $mois
+ */
+function buildPdf($idUser=NULL, $mois=NULL)
+{
+    require_once 'class.pdogsb.inc.php';
+    $pdo = PdoGsb::getPdoGsb();
+    $lesFraisHorsForfait = $pdo->getLesFraisHorsForfait($idUser, $mois);
+    $lesFraisForfait = $pdo->getLesFraisForfait($idUser, $mois);
+    $lesInfosFicheFrais = $pdo->getLesInfosFicheFrais($idUser, $mois);    
+    $pdf = new PDF();
+    $pdf->AddPage();
+    $pdf->SetFont('Arial','B',12);
+    $pdf->SetMargins(20, 20, 20);
+    $spaceH = 10;
+    $pdf->Image('images/logo.jpg', 80, 20);
+    $pdf->setY(70);
+    $pdf->SetTextColor(0, 51, 102);
+    $pdf->Cell(180, 10, 'REMBOURSEMENT DE FRAIS ENGAGES', 1, 0, 'C');
+    $pdf->SetTextColor(0);
+    $pdf->setY($pdf->getY()+$spaceH);
+    $header = array('', '', '');
+    $data = array(array('Visiteur', $_SESSION['idUser'], $_SESSION['nom'] . ' ' . $_SESSION['prenom']), 
+        array('Mois', substr($mois, 4, 2) . '/' . substr($mois, 0, 4), ''));
+    $pdf->FancyTable($header, $data, 35, 3);
+    $pdf->setY($pdf->getY()+$spaceH);
+    $header = array('Frais Forfaitaires', utf8_decode('Quantité'), 'Montant unitaire', 'TOTAL');
+    $data = array();
+    Foreach ($lesFraisForfait as $unFraisForfait) {
+        if (strlen($unFraisForfait['idfrais']) == 2) {
+            $data[] = array(substr(utf8_decode($unFraisForfait['libelle']), 0, 18), $unFraisForfait['quantite'],
+                $unFraisForfait['montant'], $unFraisForfait['quantite'] * $unFraisForfait['montant']);
+            
+        } else {
+            $data[] = array(utf8_decode($unFraisForfait['libelle']), $unFraisForfait['quantite'], 
+                $unFraisForfait['montant'], $unFraisForfait['quantite'] * $unFraisForfait['montant']);
+        }
+    }
+    $pdf->FancyTable($header, $data, 35, 4, 'b');
+    $pdf->setXY(35, $pdf->getY()+$spaceH);
+    $pdf->SetTextColor(0, 51, 102);
+    $pdf->SetFont('','B');
+    $pdf->Cell(145, 10, 'Autres Frais', 0, 0, 'C');
+    $pdf->SetFont('');
+    $pdf->SetTextColor(0);
+    $pdf->Ln();
+    $header = array('Date', utf8_decode('Libellé'), 'Montant');
+    $data = array();
+    Foreach ($lesFraisHorsForfait as $unFraisHorsForfait) {
+        if (substr($unFraisHorsForfait['libelle'], 0, 6) <> 'REFUSE') {
+            $data[] = array(utf8_decode($unFraisHorsForfait['date']), utf8_decode($unFraisHorsForfait['libelle']),
+                $unFraisHorsForfait['montant']);
+        }
+    }
+    $pdf->FancyTable($header, $data, 35, 3, 'b');
+    $pdf->setXY(110, $pdf->getY()+$spaceH);
+    $pdf->cell(35, 7, 'TOTAL', 1);
+    $pdf->cell(40, 7, $lesInfosFicheFrais['montantValide'].iconv("UTF-8", "CP1252", "€"), 1, 0, 'R');    
+    $pdf->rect(20, 80, 180, $pdf->getY()+$spaceH-75);
+    $pdf->setXY(130, $pdf->getY()+2*$spaceH);
+    $pdf->cell(35, 7, utf8_decode('Fait à Paris, le ') . date('d-m-Y'), 0);
+    $pdf->Ln();
+    $pdf->setX(130);
+    $pdf->cell(35, 7, "Vu l'agent comptable", 0);
+    $pdf->Output();
+}
+
+/**
  * Retourne le mois au format aaaamm selon le jour dans le mois
  *
  * @param String $date au format  jj/mm/aaaa

@@ -13,10 +13,22 @@
  * @version   GIT: <0>
  * @link      http://www.reseaucerta.org Contexte Â« Laboratoire GSB Â»
  */
+if ($uc=='gererFrais') {
 ?>
-<div class="alert alert-success" role="alert">
+    <div class="alert alert-success" role="alert">
+        <?php
+        echo 'La fiche a été correctement validée : ';
+        ?>
+        <a href="index.php?uc=accueil"> Retour à l'accueil </a>
+    </div>
+<?php 
+} elseif ($uc=='etatFrais') {
+?>  
+	<div class="alert alert-success" role="alert">
     <?php
-    echo 'La fiche a été correctement validée : ';
+    echo 'Les fiches mises en paiement ont bien été remboursées : ';
     ?>
-    <a href="index.php?uc=accueil"> Retour à l'accueil </a>
-</div>
+        <a href="index.php?uc=accueil"> Retour à l'accueil </a>
+    </div>
+<?php 
+}?>

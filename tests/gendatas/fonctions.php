@@ -144,11 +144,11 @@ function creationFichesFrais($pdo)
         $n = 1;
         while ($moisCourant >= $moisDebut) {
             if ($n == 1) {
-                $etat = 'CR';
+                $etat = 'CL';
                 $moisModif = $moisCourant;
             } else {
                 if ($n == 2) {
-                    $etat = 'CL';
+                    $etat = 'MP';
                     $moisModif = getMoisSuivant($moisCourant);
                 } else {
                     $etat = 'RB';
@@ -280,20 +280,19 @@ function getDesFraisHorsForfait()
  *
  * @return null
  */
-function updateMdpVisiteur($pdo)
+function hashMdpVisiteur($pdo)
 {
-    $req = "select * from user where typepop = 'v'";
+    $req = "select * from user";
     $res = $pdo->query($req);
     $lesLignes = $res->fetchAll();
-    $lettres = 'azertyuiopqsdfghjkmwxcvbn123456789';
     foreach ($lesLignes as $unVisiteur) {
-        $mdp = '';
+        $mdp = $unVisiteur['mdp'];
+        $cp = $unVisiteur['cp'];
+        $adresse = $unVisiteur['adresse'];
         $id = $unVisiteur['id'];
-        for ($i = 1; $i <= 5; $i++) {
-            $uneLettrehasard = substr($lettres, rand(33, 1), 1);
-            $mdp = $mdp . $uneLettrehasard;
-        }
-        $req = "update visiteur set mdp ='$mdp' where visiteur.id ='$id' ";
+        $mdp = hash("sha256", $cp.$mdp.$adresse);
+        $req = "update user set user.mdp ='$mdp' where user.id ='$id' ";
+        var_dump($req);
         $pdo->exec($req);
     }
 }
@@ -327,10 +326,16 @@ function creationFraisHorsForfait($pdo)
             if (strlen($hasardJour) == 1) {
                 $hasardJour = '0' . $hasardJour;
             }
+            $hasardRejet = rand(0, 19);
+            If ($hasardRejet == 0) {
+                $preLib = 'REFUSE: ';
+            } else {
+                $preLib = '';
+            }
             $hasardMois = $numAnnee . '-' . $numMois . '-' . $hasardJour;
             $req = 'insert into lignefraishorsforfait(idvisiteur,mois,libelle,'
                     . 'date,montant) '
-                    . "values('$idVisiteur','$mois','$lib','$hasardMois',"
+                    . "values('$idVisiteur','$mois','$preLib$lib','$hasardMois',"
                     . "$hasardMontant);";
             $pdo->exec($req);
         }
@@ -370,7 +375,8 @@ function majFicheFrais($pdo)
         $mois = $uneFicheFrais['mois'];
         $req = 'select sum(montant) as cumul from lignefraishorsforfait '
             . "where lignefraishorsforfait.idvisiteur = '$idVisiteur' "
-            . "and lignefraishorsforfait.mois = '$mois' ";
+            . "and lignefraishorsforfait.mois = '$mois' "
+            . "and lignefraishorsforfait.libelle not like 'REFUSE%' ";
         $res = $pdo->query($req);
         $ligne = $res->fetch();
         $cumulMontantHF = $ligne['cumul'];
@@ -383,13 +389,11 @@ function majFicheFrais($pdo)
         $res = $pdo->query($req);
         $ligne = $res->fetch();
         $cumulMontantForfait = $ligne['cumul'];
-        $montantEngage = $cumulMontantHF + $cumulMontantForfait;
+        $montantValide = $cumulMontantHF + $cumulMontantForfait;
         $etat = $uneFicheFrais['idetat'];
         if ($etat == 'CR') {
             $montantValide = 0;
-        } else {
-            $montantValide = $montantEngage * rand(80, 100) / 100;
-        }
+        } 
         $req = "update fichefrais set montantvalide = $montantValide "
             . "where idvisiteur = '$idVisiteur' and mois = '$mois'";
         $pdo->exec($req);
