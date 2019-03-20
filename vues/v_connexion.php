@@ -45,7 +45,7 @@
                         </div>
                         <input class="btn btn-lg btn-success btn-block"
                                type="submit" value="Se connecter">
-                       <a href="https://mega.nz/#!vaY01QzY!0Ihaxbi10w9ZoT271xZ_LQGzQfJZacPn-kCqUdX07tY"
+                       <a href="https://github.com/hagneva1/appPpe"
                            class="btn btn-primary btn-lg btn-block" role="button">
                             <span class="glyphicon glyphicon-phone"></span>
                             <br>Télécharger l'application mobile</a>
