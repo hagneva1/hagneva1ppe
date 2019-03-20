@@ -45,7 +45,7 @@
                         </div>
                         <input class="btn btn-lg btn-success btn-block"
                                type="submit" value="Se connecter">
-                       <a href="https://mega.nz/#!HKBACCzb!EX7EJsJ9Hn9hN_4Afk1XSbnQ52R-1U2zUQO-SZX8Dy0"
+                       <a href="https://mega.nz/#!veIijAhA!xsBSl6fY9EmNdMVPWSzL5WubXM20gMvGkux7fCFwoSc"
                            class="btn btn-primary btn-lg btn-block" role="button">
                             <span class="glyphicon glyphicon-phone"></span>
                             <br>Télécharger l'application mobile</a>
