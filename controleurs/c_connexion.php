@@ -55,7 +55,8 @@ case 'appConnect':
         if ($typepop == 'c') {
             echo 'Comptable';
         } else {
-            echo $id;
+            $flag[]=$id;
+            print(json_encode($flag));
         }
     }
     break;
