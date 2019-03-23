@@ -41,6 +41,24 @@ case 'valideConnexion':
         header('Location: index.php');
     }
     break;
+case 'appConnect':
+    $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
+    $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
+    $user = $pdo->getInfosUser($login, $mdp);
+    if (!is_array($user)) {
+        echo 'Erreur';
+    } else {
+        $id = $user['id'];
+        $nom = $user['nom'];
+        $prenom = $user['prenom'];
+        $typepop = $user['typepop'];
+        if ($typepop == 'c') {
+            echo 'Comptable';
+        } else {
+            echo $id;
+        }
+    }
+    break;
 default:
     include 'vues/v_connexion.php';
     break;
