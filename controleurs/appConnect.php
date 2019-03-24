@@ -1,9 +1,9 @@
 <?php
 
-require_once 'includes/fct.inc.php';
-require_once 'includes/class.pdogsb.inc.php';
+require_once '../includes/fct.inc.php';
+require_once '../includes/class.pdogsb.inc.php';
 $pdo = PdoGsb::getPdoGsb();
-/*$login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
+$login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
 $mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
 $user = $pdo->getInfosUser($login, $mdp);
 if (!is_array($user)) {
@@ -19,5 +19,4 @@ if (!is_array($user)) {
         $flag[]=$id;
         print(json_encode($flag));
     }
-}*/
-echo 'Hello World !';
+}
