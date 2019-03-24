@@ -16,7 +16,6 @@ if (!is_array($user)) {
     if ($typepop == 'c') {
         echo 'Comptable';
     } else {
-        $flag[]=$id;
-        print(json_encode($flag));
+        echo $id;
     }
 }
