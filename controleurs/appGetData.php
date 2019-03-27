@@ -15,5 +15,7 @@ $lesFrais[$typeVehicule]=$km;
 $lesFrais['ETP']=$etp;
 $lesFrais['NUI']=$nui;
 $lesFrais['REP']=$rep;
+echo $id.' '.$mois;
+print_r($lesFrais);
 $pdo->majFraisForfait($id, $mois, $lesFrais);
 
