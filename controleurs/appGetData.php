@@ -12,8 +12,8 @@ $nui = filter_input(INPUT_POST, 'NUI', FILTER_SANITIZE_STRING);
 $rep = filter_input(INPUT_POST, 'REP', FILTER_SANITIZE_STRING);
 $lesFrais=[];
 $lesFrais[$typeVehicule]=$km;
-$lesFrais[ETP]=$etp;
-$lesFrais[NUI]=$nui;
-$lesFrais[REP]=$rep;
+$lesFrais['ETP']=$etp;
+$lesFrais['NUI']=$nui;
+$lesFrais['REP']=$rep;
 $pdo->majFraisForfait($id, $mois, $lesFrais);
 
