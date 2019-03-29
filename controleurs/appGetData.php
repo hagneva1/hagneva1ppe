@@ -14,7 +14,7 @@ if ($lesFraisHF[0]['mois'] < 10) {
 } else {
     $mois = $lesFraisHF[0]['annee']+$lesFraisHF[0]['mois'];
 }
-$pdo->majFraisForfait($id, $mois, $lesFrais);
+//$pdo->majFraisForfait($id, $mois, $lesFrais);
 $tab = $pdo->getLesFraisHorsForfait($id, $mois);
 foreach ($lesFraisHF[0]['lesFraisHf'] as $unFraisHF) {
     $flag = 0;
@@ -23,10 +23,11 @@ foreach ($lesFraisHF[0]['lesFraisHf'] as $unFraisHF) {
             $flag = 1;
         }
         if ($flag == 0){
-            $pdo->creeNouveauFraisHorsForfait(
+            /*$pdo->creeNouveauFraisHorsForfait(
                 $id, $mois, $unFraisHF['motif'],
                 substr($mois, 0, 4).'-'.substr($mois, 4, 2).'-'.$unFraisHF['jour'],
-                $unFraisHF['montant']);
+                $unFraisHF['montant']);*/
         }
     }
 }
+echo $lesFraisHF[0]['typeVehicule'];
