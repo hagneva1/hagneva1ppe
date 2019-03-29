@@ -3,7 +3,7 @@
 require_once '../includes/fct.inc.php';
 require_once '../includes/class.pdogsb.inc.php';
 $pdo = PdoGsb::getPdoGsb();
-file_get_contents('php://input');
+$json = file_get_contents('php://input');
 $lesFraisHF = json_decode($json, true);
 $id = $lesFraisHF[0]['id'];
 $lesFrais = array($lesFraisHF[0]['typeVehicule'] => $lesFraisHF[0]['km'],
