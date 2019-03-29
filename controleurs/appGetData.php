@@ -11,7 +11,7 @@ $etp = filter_input(INPUT_POST, 'ETP', FILTER_SANITIZE_STRING);
 $nui = filter_input(INPUT_POST, 'NUI', FILTER_SANITIZE_STRING);
 $rep = filter_input(INPUT_POST, 'REP', FILTER_SANITIZE_STRING);
 $json = filter_input(INPUT_POST, 'lesFraisHF', FILTER_SANITIZE_STRING);
-$lesFraisHF = json_decode($json);
+$lesFraisHF = json_decode($json, true);
 $lesFrais = array($typeVehicule => $km, "ETP" => $etp, "NUI" => $nui, "REP" => $rep);
 //$pdo->majFraisForfait($id, $mois, $lesFrais);
 print_r($lesFraisHF);
