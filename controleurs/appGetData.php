@@ -30,4 +30,4 @@ foreach ($lesFraisHF[0]['lesFraisHf'] as $unFraisHF) {
         }
     }
 }
-echo $lesFraisHF[0]['typeVehicule'];
+echo $lesFraisHF['typeVehicule'];
