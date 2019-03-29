@@ -10,12 +10,11 @@ $lesFrais = array($lesFraisHF[0]['typeVehicule'] => $lesFraisHF[0]['km'],
     "ETP" => $lesFraisHF[0]['etape'], "NUI" => $lesFraisHF[0]['nuitee'],
     "REP" => $lesFraisHF[0]['repas']);
 if ($lesFraisHF[0]['mois'] < 10) {
-    echo 'fine';
     $mois = $lesFraisHF[0]['annee']+'0'+$lesFraisHF[0]['mois'];
 } else {
-    echo 'fine';
     $mois = $lesFraisHF[0]['annee']+$lesFraisHF[0]['mois'];
 }
+echo $id.' '.$mois.' '.$lesFraisHF[0]['etape'];
 $pdo->majFraisForfait($id, $mois, $lesFrais);
 $tab = $pdo->getLesFraisHorsForfait($id, $mois);
 foreach ($lesFraisHF[0]['lesFraisHf'] as $unFraisHF) {
