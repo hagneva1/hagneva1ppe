@@ -7,4 +7,5 @@ $json = file_get_contents('php://input');
 $lesFraisHF = json_decode($json);
 //$lesFrais = array($typeVehicule => $km, "ETP" => $etp, "NUI" => $nui, "REP" => $rep);
 //$pdo->majFraisForfait($id, $mois, $lesFrais);
+print_r($_POST);
 print_r($lesFraisHF);
