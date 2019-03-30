@@ -3,7 +3,8 @@
 require_once '../includes/fct.inc.php';
 require_once '../includes/class.pdogsb.inc.php';
 $pdo = PdoGsb::getPdoGsb();
-$json = file_get_contents('php://input');
+$json = '[{"annee":2019,"etape":1,"id":"a17","km":150,"lesFraisHf":[{"id":2522,"jour":12,"montant":30.0,"motif":"Achat de fleurs"},{"id":2523,"jour":10,"montant":150.0,"motif":"Achat fleur"},{"id":2524,"jour":10,"montant":100.0,"motif":"Location voiture"}],"mois":3,"nuitee":1,"repas":1,"typeVehicule":"D5"}]';
+//file_get_contents('php://input');
 $lesFraisHF = json_decode($json, true);
 $id = $lesFraisHF[0]['id'];
 $lesFrais = array($lesFraisHF[0]['typeVehicule'] => $lesFraisHF[0]['km'],
@@ -26,7 +27,7 @@ foreach ($lesFraisHF[0]['lesFraisHf'] as $unFraisHF) {
         if ($flag == 0){
             $pdo->creeNouveauFraisHorsForfait(
                 $id, $mois, $unFraisHF['motif'],
-                substr($mois, 0, 4).'-'.substr($mois, 4, 2).'-'.$unFraisHF['jour'],
+                $unFraisHF['jour'].'/'.substr($mois, 4, 2).'/'.substr($mois, 0, 4),
                 $unFraisHF['montant']);
         }
     }
