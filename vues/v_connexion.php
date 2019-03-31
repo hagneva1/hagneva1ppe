@@ -45,7 +45,7 @@
                         </div>
                         <input class="btn btn-lg btn-success btn-block"
                                type="submit" value="Se connecter">
-                       <a href="https://github.com/hagneva1/appPpe"
+                       <a href="https://github.com/hagneva1/Suividevosfrais"
                            class="btn btn-primary btn-lg btn-block" role="button">
                             <span class="glyphicon glyphicon-phone"></span>
                             <br>Télécharger l'application mobile</a>
