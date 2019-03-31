@@ -15,12 +15,12 @@ if ($lesFraisHF[0]['mois'] < 10) {
     $mois = $lesFraisHF[0]['annee'].$lesFraisHF[0]['mois'];
 }
 $test = json_encode($lesFrais);
-echo $test;
 $pdo->majFraisForfait($id, $mois, $lesFrais);
 $tab = $pdo->getLesFraisHorsForfait($id, $mois);
 foreach ($lesFraisHF[0]['lesFraisHf'] as $unFraisHF) {
     $flag = 0;
     foreach ($tab as $ligne) {
+        echo $ligne['id'].'=='.$unFraisHF['id'].' ';
         if ($ligne['id'] == $unFraisHF['id']) {
             $flag = 1;
         }
