@@ -14,7 +14,6 @@ if ($lesFraisHF[0]['mois'] < 10) {
 } else {
     $mois = $lesFraisHF[0]['annee'].$lesFraisHF[0]['mois'];
 }
-$test = json_encode($lesFrais);
 $pdo->majFraisForfait($id, $mois, $lesFrais);
 $tab = $pdo->getLesFraisHorsForfait($id, $mois);
 foreach ($lesFraisHF[0]['lesFraisHf'] as $unFraisHF) {
@@ -24,12 +23,12 @@ foreach ($lesFraisHF[0]['lesFraisHf'] as $unFraisHF) {
         if ($ligne['id'] == $unFraisHF['id']) {
             $flag = 1;
         }
-        if ($flag == 0){
-            $pdo->creeNouveauFraisHorsForfait(
-                $id, $mois, $unFraisHF['motif'],
-                $unFraisHF['jour'].'/'.substr($mois, 4, 2).'/'.substr($mois, 0, 4),
-                $unFraisHF['montant']);
-        }
+    }
+    if ($flag == 0){
+        $pdo->creeNouveauFraisHorsForfait(
+            $id, $mois, $unFraisHF['motif'],
+            $unFraisHF['jour'].'/'.substr($mois, 4, 2).'/'.substr($mois, 0, 4),
+            $unFraisHF['montant']);
     }
 }
 
