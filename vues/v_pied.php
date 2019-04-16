@@ -14,8 +14,19 @@
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 ?>
+            </div>
+        </body>
+    <footer>
+        <div align="left">
+        	hagneva1ppe
         </div>
-    </body>
+        <div align="center">
+        	hagneva1ppe
+        </div>
+        <div align="right">
+        	créé par Valentin Hagnéré
+        </div>
+    </footer>
 </html>
 
 
