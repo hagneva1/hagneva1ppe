@@ -136,23 +136,26 @@ function creationFichesFrais($pdo)
 {
     global $moisDebut; // valeur dans majGSB.php
     $lesVisiteurs = getLesVisiteurs($pdo);
-    $moisActuel = getMois(date('d/m/Y'));
-    $moisFin = getMoisPrecedent($moisActuel);
+    $moisFin = getMois(date('d/m/Y'));
     foreach ($lesVisiteurs as $unVisiteur) {
         $moisCourant = $moisFin;
         $idVisiteur = $unVisiteur['id'];
-        $n = 1;
+        $n = 0;
         while ($moisCourant >= $moisDebut) {
-            if ($n == 1) {
-                $etat = 'CL';
+            if ($n ==0) {
+                $etat = 'CR';
                 $moisModif = $moisCourant;
+            }
+            else if ($n == 1) {
+                $etat = 'CL';
+                $moisModif = getMoisSuivant($moisCourant);
             } else {
                 if ($n == 2) {
                     $etat = 'MP';
-                    $moisModif = getMoisSuivant($moisCourant);
+                    $moisModif = getMoisSuivant(getMoisSuivant($moisCourant));
                 } else {
                     $etat = 'RB';
-                    $moisModif = getMoisSuivant(getMoisSuivant($moisCourant));
+                    $moisModif = getMoisSuivant(getMoisSuivant(getMoisSuivant($moisCourant)));
                 }
             }
             $numAnnee = substr($moisModif, 0, 4);
