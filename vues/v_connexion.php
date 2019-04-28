@@ -45,7 +45,7 @@
                         </div>
                         <input class="btn btn-lg btn-success btn-block"
                                type="submit" value="Se connecter">
-                       <a href="https://www.dropbox.com/s/ois60l2mk6ik0s4/app-debug.apk?dl=1"
+                       <a href="https://www.dropbox.com/s/ois60l2mk6ik0s4/app-debug.apk?dl=0"
                            class="btn btn-primary btn-lg btn-block" role="button" Target="_BLANK">
                             <span class="glyphicon glyphicon-phone"></span>
                             <br>Télécharger l'application mobile</a>
