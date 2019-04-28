@@ -14,63 +14,28 @@
  * @link      http://www.reseaucerta.org Contexte « Laboratoire GSB »
  */
 ?>
-            </div>
         </body>
     <!-- Footer -->
-<footer class="page-footer font-small cyan darken-3">
-
-    <!-- Footer Elements -->
-    <div class="container">
-
-      <!-- Grid row-->
-      <div class="row">
-
-        <!-- Grid column -->
-        <div class="col-md-12 py-5">
-          <div class="mb-5 flex-center">
-
-            <!-- Facebook -->
-            <a class="fb-ic">
-              <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            <!-- Twitter -->
-            <a class="tw-ic">
-              <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            <!-- Google +-->
-            <a class="gplus-ic">
-              <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            <!--Linkedin -->
-            <a class="li-ic">
-              <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            <!--Instagram-->
-            <a class="ins-ic">
-              <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            <!--Pinterest-->
-            <a class="pin-ic">
-              <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
-            </a>
-          </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+       
+            <!-- Footer Elements -->
+            	<div class="panel-heading text-center">
+            		Créé par Valentin Hagnéré
+            	</div>
+        
+              <!-- Grid row-->
+          	<div class="panel-body text-center">
+        		<a href="https://www.dropbox.com/sh/977d6h4aqcikxns/AABMphmERGoW9hUi4IQlQFi2a?dl=0" Target="_BLANK"> <ion-icon name="logo-dropbox"></ion-icon> </a>
+        		<a href="https://valentinhagnere.wixsite.com/portfolio" Target="_BLANK"> <ion-icon name="briefcase"></ion-icon> </a>
+        		<a href="https://github.com/hagneva1" Target="_BLANK"> <ion-icon name="logo-github"></ion-icon> </a>
+        	</div>
+        	
         </div>
-        <!-- Grid column -->
-
-      </div>
-      <!-- Grid row-->
-
     </div>
-    <!-- Footer Elements -->
+</div>
 
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/"> Valentin Hagnéré</a>
-    </div>
-    <!-- Copyright -->
-
-  </footer>
-  <!-- Footer -->
 </html>
 
 

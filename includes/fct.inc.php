@@ -147,6 +147,7 @@ function buildPdf($idUser=NULL, $mois=NULL)
     $pdf->Ln();
     $pdf->setX(130);
     $pdf->cell(35, 7, "Vu l'agent comptable", 0);
+    $pdf->Image('images/signature.jpg', 130);
     $pdf->Output();
 }
 

@@ -274,11 +274,21 @@ class PdoGsb
     public function majFraisForfait($idVisiteur, $mois, $lesFrais)
     {
         $lesCles = array_keys($lesFrais);
+        $request = PdoGSB::$monPdo->prepare(
+            'UPDATE lignefraisforfait '
+            . 'SET lignefraisforfait.quantite = NULL '
+            . 'WHERE lignefraisforfait.idvisiteur = :unIdUser '
+            . 'AND lignefraisforfait.mois = :unMois '
+            . "AND lignefraisforfait.idfraisforfait in ('E4', 'E5', 'D4', 'D5')"
+            );
+        $request->bindParam(':unIdUser', $idVisiteur, PDO::PARAM_STR);
+        $request->bindParam(':unMois', $mois, PDO::PARAM_STR);
+        $request->execute();
         foreach ($lesCles as $unIdFrais) {
             $qte = $lesFrais[$unIdFrais];
             if ($qte == ""){
                 
-            } else {
+            } else {               
                 $requetePrepare = PdoGSB::$monPdo->prepare(
                     'UPDATE lignefraisforfait '
                     . 'SET lignefraisforfait.quantite = :uneQte '
