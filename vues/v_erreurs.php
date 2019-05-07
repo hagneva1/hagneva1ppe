@@ -1,6 +1,6 @@
 <?php
 /**
- * Vue Erreurs
+ * Vue des Erreurs
  *
  * PHP Version 7
  *
