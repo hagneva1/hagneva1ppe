@@ -81,7 +81,7 @@ function dateAnglaisVersFrancais($maDate)
 }
 
 /**
- * Affiche le pdf de la fiche de frais de l'idUser pour le mois donné
+ * Affiche le pdf de la fiche de frais de l'idUser pour le mois donné en param�tre
  * 
  * @param string $idUser
  * @param integer $mois
